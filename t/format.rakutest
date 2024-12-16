@@ -1,8 +1,8 @@
-use v6;
 use Test;
-plan 16;
 
 use CLDR::List;
+
+plan 16;
 
 my $list = CLDR::List.new;
 
@@ -32,3 +32,5 @@ is $list.format(<一 丁 丈>), '一、丁和丈',     'zh-Hant: 3 elements';
 
 $list.locale = 'ar';
 is $list.format(<ﺍ ﺏ ﺕ>),    'ﺍ، ﺏ، و ﺕ',      'ar: 3 elements';
+
+# vim: expandtab shiftwidth=4

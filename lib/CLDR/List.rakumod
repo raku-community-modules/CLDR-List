@@ -50,10 +50,10 @@ has $.locale = 'root';
 has $!previous-locale;
 has %!pattern;
 
-method format (*@list) {
+method format(*@list) {
     self!update-pattern;
 
-    return do given @list {
+    do given @list {
         when 0 { '' }
         when 1 { ~@list[0] }
         when 2 { %!pattern<2>.trans(@placeholders => @list) }
@@ -78,7 +78,7 @@ method format (*@list) {
 }
 
 # TODO: does Perl 6 have attribute triggers like Moose?
-method !update-pattern {
+method !update-pattern(-->Nil) {
     return if $!previous-locale && $!previous-locale eq $!locale;
 
     # TODO: robust locale tag handling with fallbacks
@@ -97,18 +97,22 @@ CLDR::List - Localized list formatters using the Unicode CLDR
 
 =head1 SYNOPSIS
 
-    use CLDR::List;
+=begin code :lang<raku>
 
-    my $list  = CLDR::List.new(locale => 'en');
-    my @fruit = <apples oranges bananas>;
+use CLDR::List;
 
-    say $list.format(@fruit);      # apples, oranges, and bananas
+my $list  = CLDR::List.new(locale => 'en');
+my @fruit = <apples oranges bananas>;
 
-    $list.locale = 'en-GB';        # British English
-    say $list.format(@fruit);      # apples, oranges and bananas
+say $list.format(@fruit);      # apples, oranges, and bananas
 
-    $list.locale = 'zh-Hant';      # Traditional Chinese
-    say $list.format('１'..'４');  # １、２、３和４
+$list.locale = 'en-GB';        # British English
+say $list.format(@fruit);      # apples, oranges and bananas
+
+$list.locale = 'zh-Hant';      # Traditional Chinese
+say $list.format('１'..'４');  # １、２、３和４
+
+=end code
 
 =head1 DESCRIPTION
 
@@ -116,23 +120,13 @@ Localized list formatters using the Unicode CLDR.
 
 =head2 Attributes
 
-=over
-
 =item locale
-
-=back
 
 =head2 Methods
 
-=over
-
 =item format
 
-=back
-
 =head1 SEE ALSO
-
-=over
 
 =item * L<List Patterns in UTS #35: Unicode
 LDML|http://www.unicode.org/reports/tr35/tr35-general.html#ListPatterns>
@@ -144,15 +138,15 @@ CLDR TL;DR|http://perladvent.org/2014/2014-12-23.html>
 CLDR|http://patch.codes/talks/localization-with-the-unicode-cldr/> (video and
 slides)
 
-=back
-
 =head1 AUTHOR
 
-Nova Patch <patch@cpan.org>
+Nova Patch
 
 =head1 COPYRIGHT AND LICENSE
 
-© 2013–2015 Nova Patch
+Copyright 2013 – 2017 Nova Patch
+
+Copyright 2024 Raku Community
 
 This library is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.

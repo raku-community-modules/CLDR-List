@@ -1,10 +1,25 @@
 {
-    "perl"        : "6.*",
-    "name"        : "CLDR::List",
-    "version"     : "*",
-    "author"      : "Nova Patch",
-    "description" : "Localized list formatters using the Unicode CLDR",
-    "depends"     : [],
-    "provides"    : { "CLDR::List" : "lib/CLDR/List.pm" },
-    "source-url"  : "git://github.com/patch/cldr-list-pm6.git"
+  "auth": "zef:raku-community-modules",
+  "author": "Nova Patch",
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Localized list formatters using the Unicode CLDR",
+  "license": "Artistic-2.0",
+  "name": "CLDR::List",
+  "perl": "6.*",
+  "provides": {
+    "CLDR::List": "lib/CLDR/List.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/raku-community-modules/CLDR-List.git",
+  "tags": [
+    "CLDR",
+    "LOCALE"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.2"
 }
